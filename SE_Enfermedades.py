@@ -17,7 +17,7 @@ def abrir_ventana_experto():
         factor_riesgo = combo_factores_riesgo.get()
 
         sintoma =""
-
+        #--------- Esta sección hay que cambiarla, ya que no vamos a usar lo mismo ---------#
         if Grupo1_var.get():
             sintoma = "Grupo1"
         else:
@@ -82,13 +82,13 @@ def abrir_ventana_experto():
             etiqueta_imagen.image = imagen_tk  # ¡Importante! Evita que la imagen se elimine debido a la recolección de basura
 
 
-    # ----------------------------INTERFAZ DE USUARIO EXPERTO-----------------------------#
+    # ----------------------------INTERFAZ DE USUARIO EXPERTO-----------------------------#==================
     global ventana_experto
     ventana.withdraw()  # Oculta la ventana principal
     ventana_experto = tk.Toplevel(ventana)  # Crea una nueva ventana secundaria
-    ventana_experto.title("Sistema Experto para la Detección de Enfermedades Respiratorias Comunes")
+    ventana_experto.title("Sistema Experto para escoger novio/a para tu hija/o")
     ancho_ventana = 625
-    alto_ventana = 550
+    alto_ventana = 580
 
     # Obtener el ancho y alto de la pantalla
     ancho_pantalla = ventana_experto.winfo_screenwidth()
@@ -105,7 +105,7 @@ def abrir_ventana_experto():
     fuente_Title = ('Times', 16)  # Tipo de letra Arial, tamaño 16
 
     # Titulo
-    etiqueta_titulo = ttk.Label(ventana_experto, text="Sistema Experto de Enfermedades Respiratorias Comunes:", font=fuente_Title)
+    etiqueta_titulo = ttk.Label(ventana_experto, text="Sistema Experto escoger novio/a para tu hija/o:", font=fuente_Title)
     etiqueta_titulo.grid(row=0, column = 0, columnspan=2, pady=10)
 
     # Configurar las columnas para expandirse
@@ -114,34 +114,35 @@ def abrir_ventana_experto():
 
     # Edad y combobox
     Genero = {
-    "1-19 años":"Niño/Puberto/Adolescente",
-    "20-39 años": "Adulto",
-    "40+ años": "Adulto mayor"    
+        "Masculino":"Ser humano que nacio Hombre y se identifica como tal",
+        "Femenino": "Ser humano que nacio Mujer y se identifica como tal",
+        "39 tipos de gay": "Ser humano que nacio Hombre/Mujer y se no esta conforme con nada"
     }
-    etiqueta_edad = ttk.Label(ventana_experto, text="¿Qué edad tiene?:")
+    etiqueta_edad = ttk.Label(ventana_experto, text="¿Qué genero eres?:")
     etiqueta_edad.grid(row=1, column=0, padx=(20,0), pady=10, sticky="w")
 
     combo_edad = ttk.Combobox(ventana_experto, values=list(Genero.keys()), state="readonly")
-    combo_edad.grid(row=1, column=0, padx=(120,0), pady=10, sticky ="w")
+    combo_edad.grid(row=1, column=0, padx=(147,0), pady=10, sticky ="w")
 
     # Etiqueta y Combo Box para Factores de Riesgo
-    Edad = {
-    "Ninguno":"",
-    "Obesidad": "Aumento de peso, Dificultad para moverse",
-    "Anorexia": "Pérdida de peso, Debilidad"    
-    }
+    Edad = { # ESTE ES EL noSQL
+        "15-18": "Adolescente tardío",
+        "19-21": "Joven adulto",
+        "21-25": "Adulto joven",
+        "26-30": "Adulto"
+    } # ESTE ES EL noSQL
 
-    etiqueta_factores_riesgo = ttk.Label(ventana_experto, text="¿Presenta algún factor de riesgo?:")
+    etiqueta_factores_riesgo = ttk.Label(ventana_experto, text="¿Que eddad tiene su hijo/a?:")
     etiqueta_factores_riesgo.grid(row=2, column=0, padx=(20,0), pady=10, sticky ="w")
 
     combo_factores_riesgo = ttk.Combobox(ventana_experto, values=list(Edad.keys()), state="readonly")
-    combo_factores_riesgo.grid(row=2, column=0, padx=(200,0), pady=10, sticky ="w")
+    combo_factores_riesgo.grid(row=2, column=0, padx=(207,0), pady=10, sticky ="w")
 
     # Etiqueta sintomas
-    etiqueta_sintomas = ttk.Label(ventana_experto, text="Marque los síntomas que presenta:")
+    etiqueta_sintomas = ttk.Label(ventana_experto, text="¡Que orientacion sexual tiene tu hija/hijo?:")
     etiqueta_sintomas.grid(row=3, column=0, padx=(20,0), pady=5, sticky ="w")
 
-    # Sintomas
+    # Sintomas # Cambiar ya que no se usaran grupos, se usaran noSQL
     #Grupo 1
     Grupo1_var = tk.BooleanVar()
     cuadro_Grupo1 = ttk.Checkbutton(ventana_experto, text="Grupo 1. \n-Fiebre y tos\n-Dolor de garganta\n-Secreción nasal, \n-Congestión nasal.", variable=Grupo1_var)
@@ -157,22 +158,22 @@ def abrir_ventana_experto():
     cuadro_Grupo3 = ttk.Checkbutton(ventana_experto, text="Grupo 3.\n-Secreción de moco\n-Fiebre alta\n-Dolor de cabeza", variable=Grupo3_var)
     cuadro_Grupo3.grid(row=4, column=0, padx=(330,0), sticky="w")
 
-    # Grupo 4 
+    # Grupo 4
     Grupo4_var = tk.BooleanVar()
     cuadro_Grupo4 = ttk.Checkbutton(ventana_experto, text="Grupo 4.\n-Pérdida de apetito\n-Pérdida de peso\n-Fatiga", variable=Grupo4_var)
     cuadro_Grupo4.grid(row=4, column=0, padx=(470,0), sticky="w")
 
     # Etiqueta y combo box para tiempo de los sintomas
-    tiempo = {
-    "1 día":"Poco tiempo",
-    "1 semana": "Tiempo considerable",
-    "1 mes": "Bastante tiempo"    
+    tiempo = { # Cambier este noSQL por el que tenemos
+        "1 día":"Poco tiempo",
+        "1 semana": "Tiempo considerable",
+        "1 mes": "Bastante tiempo"
     }
-    etiqueta_tiempo = ttk.Label(ventana_experto, text="¿Desde hace cuánto tiempo presenta estos síntomas?")
+    etiqueta_tiempo = ttk.Label(ventana_experto, text="¿Que intereses tiene tu hija/o?:")
     etiqueta_tiempo.grid(row=5, column=0, padx=(20,0), pady=10, sticky ="w")
 
     combo_tiempo = ttk.Combobox(ventana_experto, values=list(tiempo.keys()), state="readonly")
-    combo_tiempo.grid(row=5, column=0, padx=(310,0), pady=10, sticky ="w")
+    combo_tiempo.grid(row=5, column=0, padx=(224,0), pady=10, sticky ="w")
 
     # Boton Agregar Imagen
     boton_img = ttk.Button(ventana_experto, text="Subir imagen", command=cargar_imagen)
@@ -206,7 +207,7 @@ def abrir_ventana_experto():
     # Botón para Guardar Factores de Riesgo
     boton_guardar_datos = ttk.Button(ventana_experto, text="Guardar datos", command=guardar_en_base_de_hechos)
     boton_guardar_datos.grid(row=9, column=0, padx=(20,0))
-    # ----------------------------CIERRE DE INTERFAZ DE USUARIO EXPERTO-----------------------------#
+    # ----------------------------CIERRE DE INTERFAZ DE USUARIO EXPERTO-----------------------------#=====================
 
 def abrir_ventana_usuario():
     ventana_experto.destroy() # Cierra la ventana experto
@@ -214,12 +215,12 @@ def abrir_ventana_usuario():
 
    
 
-# ----------------------------INTERFAZ DE USUARIO NORMAL-----------------------------#
+# ----------------------------INTERFAZ DE USUARIO NORMAL-----------------------------#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ventana = tk.Tk()
 ventana.title("Sistema Experto para la Detección de Enfermedades Comunes")
 ancho_ventana = 625
-alto_ventana = 550
+alto_ventana = 580
 
 # Obtener el ancho y alto de la pantalla
 ancho_pantalla = ventana.winfo_screenwidth()
@@ -253,27 +254,27 @@ etiqueta_edad = ttk.Label(ventana, text="¿Qué genero eres?:")
 etiqueta_edad.grid(row=1, column=0, padx=(20,0), pady=10, sticky="w")
 
 combo_edad = ttk.Combobox(ventana, values=list(Genero.keys()), state="readonly")
-combo_edad.grid(row=1, column=0, padx=(120,0), pady=10, sticky ="w")
+combo_edad.grid(row=1, column=0, padx=(147,0), pady=10, sticky ="w")
 
 # Etiqueta y Combo Box para Factores de Riesgo
-Edad = {
+Edad = { # ESTE ES EL noSQL
     "15-18": "Adolescente tardío",
     "19-21": "Joven adulto",
     "21-25": "Adulto joven",
     "26-30": "Adulto"
-}
+} # ESTE ES EL noSQL
 
 etiqueta_factores_riesgo = ttk.Label(ventana, text="¿Que eddad tiene su hijo/a?:")
 etiqueta_factores_riesgo.grid(row=2, column=0, padx=(20,0), pady=10, sticky ="w")
 
 combo_factores_riesgo = ttk.Combobox(ventana, values=list(Edad.keys()), state="readonly")
-combo_factores_riesgo.grid(row=2, column=0, padx=(200,0), pady=10, sticky ="w")
+combo_factores_riesgo.grid(row=2, column=0, padx=(207,0), pady=10, sticky ="w")
 
 # Etiqueta sintomas
-etiqueta_sintomas = ttk.Label(ventana, text="Marque los síntomas que presenta:")
+etiqueta_sintomas = ttk.Label(ventana, text="¡Que orientacion sexual tiene tu hija/hijo?:")
 etiqueta_sintomas.grid(row=3, column=0, padx=(20,0), pady=5, sticky ="w")
 
-# Sintomas
+# Sintomas # Cambiar ya que no se usaran grupos, se usaran noSQL
 #Grupo 1
 Grupo1_var = tk.BooleanVar()
 cuadro_Grupo1 = ttk.Checkbutton(ventana, text="Grupo 1. \n-Fiebre y tos\n-Dolor de garganta\n-Secreción nasal, \n-Congestión nasal.", variable=Grupo1_var)
@@ -289,22 +290,22 @@ Grupo3_var = tk.BooleanVar()
 cuadro_Grupo3 = ttk.Checkbutton(ventana, text="Grupo 3.\n-Secreción de moco\n-Fiebre alta\n-Dolor de cabeza", variable=Grupo3_var)
 cuadro_Grupo3.grid(row=4, column=0, padx=(330,0), sticky="w")
 
-# Grupo 4 
+# Grupo 4
 Grupo4_var = tk.BooleanVar()
 cuadro_Grupo4 = ttk.Checkbutton(ventana, text="Grupo 4.\n-Pérdida de apetito\n-Pérdida de peso\n-Fatiga", variable=Grupo4_var)
 cuadro_Grupo4.grid(row=4, column=0, padx=(470,0), sticky="w")
 
 # Etiqueta y combo box para tiempo de los sintomas
-tiempo = {
+tiempo = { # Cambier este noSQL por el que tenemos
     "1 día":"Poco tiempo",
     "1 semana": "Tiempo considerable",
-    "1 mes": "Bastante tiempo"    
+    "1 mes": "Bastante tiempo"
 }
-etiqueta_tiempo = ttk.Label(ventana, text="¿Desde hace cuánto tiempo presenta estos síntomas?")
+etiqueta_tiempo = ttk.Label(ventana, text="¿Que intereses tiene tu hija/o?:")
 etiqueta_tiempo.grid(row=5, column=0, padx=(20,0), pady=10, sticky ="w")
 
 combo_tiempo = ttk.Combobox(ventana, values=list(tiempo.keys()), state="readonly")
-combo_tiempo.grid(row=5, column=0, padx=(310,0), pady=10, sticky ="w")
+combo_tiempo.grid(row=5, column=0, padx=(224,0), pady=10, sticky ="w")
 
 # Crear la primera área de texto
 text_respuesta = scrolledtext.ScrolledText(ventana, wrap=tk.WORD, width=42, height=5, state=tk.DISABLED)
@@ -317,7 +318,7 @@ text_explicacion.grid(row=8, column=0, padx=(20,0), pady=10, sticky ="w")
 
 
 # METODO PARA MOSTRAR LA EXPLICACION
-def mostrar_explicacion():    
+def mostrar_explicacion():
     edad = combo_edad.get()
     factor_riesgo = combo_factores_riesgo.get()
 
@@ -337,7 +338,7 @@ def mostrar_explicacion():
         print("El Checkbutton dolor cuadro_nauseas_var no está seleccionado.")
     if Grupo4_var.get():
         sintoma = "Grupo4"
-    else:        
+    else:
         print("Pon algo")
 
     tiempo = combo_tiempo.get()
@@ -422,7 +423,7 @@ etiqueta_imagen = tk.Label(ventana, image=imagen_tk)
 etiqueta_imagen.grid(row=7, rowspan=2, column=0, padx=(380,0))
 
 # MÉTODO PARA MOSTRAR LA IMAGEN
-def obtener_img():    
+def obtener_img():
     edad = combo_edad.get()
     factor_riesgo = combo_factores_riesgo.get()
 
@@ -442,7 +443,7 @@ def obtener_img():
         print("El Checkbutton dolor cuadro_nauseas_var no está seleccionado.")
     if Grupo4_var.get():
         sintoma = "Grupo4"
-    else:        
+    else:
         print("test")
 
     tiempo = combo_tiempo.get()
@@ -466,7 +467,7 @@ def obtener_img():
     resultadoImg = cursor3.fetchone()
 
     if resultadoImg is not None:
-        
+
         imagen_bytes2 = resultadoImg[0]
 
         # Abrir la imagen con Pillow
@@ -514,12 +515,11 @@ def obtener_img():
 def llamar_funciones():
     obtener_consulta()
     obtener_img()
-    
 
 
 
 # MÉTODO PARA MOSTRAR LA RESPUESTA
-def obtener_consulta():    
+def obtener_consulta():
     edad = combo_edad.get()
     factor_riesgo = combo_factores_riesgo.get()
 
@@ -539,7 +539,7 @@ def obtener_consulta():
         print("El Checkbutton dolor cuadro_nauseas_var no está seleccionado.")
     if Grupo4_var.get():
         sintoma = "Grupo4"
-    else:        
+    else:
         print("Pon algo")
 
     tiempo = combo_tiempo.get()
@@ -599,16 +599,16 @@ def obtener_consulta():
 
 # Boton Obtener consulta
 boton_consultar = ttk.Button(ventana, text="Obtener consulta", command=llamar_funciones)
-boton_consultar.grid(row=6, column=0, sticky ="w", pady= 5, padx=(220,0))
+boton_consultar.grid(row=6, column=0, sticky ="w", pady= 5, padx=(200,0))
 
 # Boton Ver Explicación
 boton_consultar = ttk.Button(ventana, text="Ver explicación", command=mostrar_explicacion)
-boton_consultar.grid(row=6, column=0, sticky ="e", pady= 5, padx=(0,200))
+boton_consultar.grid(row=6, column=0, sticky ="e", pady= 5, padx=(0,160))
 
 # Botón realizar otra consulta
 boton_realizar_consulta = ttk.Button(ventana, text="Realizar otra consulta",command=limpiar_casillas)
 boton_realizar_consulta.grid(row=9, column=0, padx=(20,0), sticky ="w")
- 
+
 # Botón para abrir ventana experto
 boton_abrir_experto = ttk.Button(ventana, text="Entrar a Modo Experto", command=abrir_ventana_experto)
 boton_abrir_experto.grid(row=9, column=0, padx=(20,0))
