@@ -21,7 +21,7 @@ def abrir_ventana_experto():
         respuesta = text_respuesta.get("0.0", tk.END)
         explicacion = text_explicacion.get("0.0", tk.END)
 
-        conexion = mysql.connector.connect(user='root',password='root',
+        conexion = mysql.connector.connect(user='root',password='1234',
                                         host='localhost',
                                         database='se_database',
                                         port='3306')
@@ -285,7 +285,7 @@ def mostrar_explicacion():
     orientación_sex = combo_Orientación.get()
     intereses = combo_Intereses.get()
 
-    conexion2 = mysql.connector.connect(user='root',password='root',
+    conexion2 = mysql.connector.connect(user='root',password='1234',
                                     host='localhost',
                                     database='se_database',
                                     port='3306')
@@ -312,7 +312,7 @@ def mostrar_explicacion():
         print(explicacion)
 
         # Establecer un valor inicial
-        text_explicacion.insert(tk.END, f"Según los datos ingresados, puede tener: {explicacion}\nNota. Se recomienda que busque atención médica para un diagnóstico adecuado y un tratamiento oportuno.") #Cambiar
+        text_explicacion.insert(tk.END, f"Según los datos ingresados, una potencial pareja puede ser: {explicacion}\nNota: Las parejas mostradas por este sistema no asegura al 100% la compativilidad afectiva") #Cambiar
         break
     else:
         print("No hay nada")
@@ -369,7 +369,7 @@ def obtener_img():
     intereses = combo_Intereses.get()
 
     # CONEXION CON LA BD PARA VER SI COINCIDEN LOS DATOS CON ALGO YA GUARDADO
-    conexion3 = mysql.connector.connect(user='root',password='root',
+    conexion3 = mysql.connector.connect(user='root',password='1234',
                                     host='localhost',
                                     database='se_database',
                                     port='3306')
@@ -446,7 +446,7 @@ def obtener_consulta():
     intereses = combo_Intereses.get()
 
     # CONEXION CON LA BD PARA VER SI COINCIDEN LOS DATOS CON ALGO YA GUARDADO
-    conexion2 = mysql.connector.connect(user='root',password='root',
+    conexion2 = mysql.connector.connect(user='root',password='1234',
                                     host='localhost',
                                     database='se_database',
                                     port='3306')
@@ -468,11 +468,11 @@ def obtener_consulta():
     text_respuesta.delete('1.0', tk.END)
 
     for resultado in resultados:
-        enfermedad, = resultado
-        print(enfermedad)
+        pareja, = resultado
+        print(pareja)
 
         # Establecer un valor inicial
-        text_respuesta.insert(tk.END, f"Según los datos ingresados, puede tener: {enfermedad}\nNota. Se recomienda que busque atención médica para un diagnóstico adecuado y un tratamiento oportuno.")
+        text_respuesta.insert(tk.END, f"Según los datos ingresados, una potencial pareja puede ser: {pareja}\nNota: Las parejas mostradas por este sistema no asegura al 100% la compativilidad afectiva.")
 
         text_explicacion.config(state=tk.NORMAL)
         text_explicacion.delete('1.0', tk.END)
@@ -481,7 +481,7 @@ def obtener_consulta():
 
         break
     else:
-        text_respuesta.insert(tk.END, f"No se encontró ninguna enfermedad asociada a sus síntomas, si requiere añadir información por favor vaya a la interfaz de experto")
+        text_respuesta.insert(tk.END, f"No se encontró ninguna posible pareja en la base de datos.")
         text_explicacion.config(state=tk.NORMAL)
         text_explicacion.delete('1.0', tk.END)
         text_explicacion.insert(tk.END, "")
