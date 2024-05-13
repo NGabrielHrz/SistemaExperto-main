@@ -515,5 +515,3 @@ boton_abrir_experto = ttk.Button(ventana, text="Entrar a Modo Experto", command=
 boton_abrir_experto.grid(row=9, column=0, padx=(20,0))
 
 ventana.mainloop()
-
-
