@@ -129,17 +129,20 @@ def abrir_ventana_experto():
         "Tomboys":"Tomboys (G.O.A.T)",
         "Femboys":"Femboys (G.O.A.T)"
     }
-    etiqueta_Orientación = ttk.Label(ventana_experto, text="¡Que orientacion sexual tiene tu hija/hijo?:")
+    etiqueta_Orientación = ttk.Label(ventana_experto, text="¿Que orientacion sexual tiene tu hija/hijo?:")
     etiqueta_Orientación.grid(row=3, column=0, padx=(20,0), pady=5, sticky ="w")
 
     combo_Orientación = ttk.Combobox(ventana_experto, values=list(Orientación_Sex.keys()), state="readonly")
-    combo_Orientación.grid(row=3, column=0, padx=(207,0), pady=5, sticky ="w")
+    combo_Orientación.grid(row=3, column=0, padx=(300,0), pady=5, sticky ="w")
 
     # Etiqueta y combo box para tiempo de los Intereses
     Intereses = { # Cambier este noSQL por el que tenemos
-        "1 día":"Poco tiempo",
-        "1 semana": "Tiempo considerable",
-        "1 mes": "Bastante tiempo"
+        "Música":"",
+        "Libros": "",
+        "Películas": "",
+        "Deportes": "",
+        "Viajes": "",
+        "Animales": ""
     }
     etiqueta_Intereses = ttk.Label(ventana_experto, text="¿Que intereses tiene tu hija/o?:")
     etiqueta_Intereses.grid(row=5, column=0, padx=(20,0), pady=10, sticky ="w")
@@ -258,9 +261,12 @@ combo_Orientación.grid(row=3, column=0, padx=(300,0), pady=5, sticky ="w")
 
 # Etiqueta y combo box para tiempo de los Intereses
 Intereses = { # Cambier este noSQL por el que tenemos
-    "1 día":"Poco tiempo",
-    "1 semana": "Tiempo considerable",
-    "1 mes": "Bastante tiempo"
+    "Música":"",
+    "Libros": "",
+    "Películas": "",
+    "Deportes": "",
+    "Viajes": "",
+    "Animales": ""
 }
 etiqueta_Intereses = ttk.Label(ventana_experto, text="¿Que intereses tiene tu hija/o?:")
 etiqueta_Intereses.grid(row=5, column=0, padx=(20,0), pady=10, sticky ="w")
